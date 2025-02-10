@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet'
+    href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+  <link rel="stylesheet" href="../assets/css/pages/form/index.css">
+  <title>Formulário de inscrição | Shallow Beachwear</title>
+</head>
+
+<body>
+  <section class="form">
+    <div class="centro elementFlex">
+      <form name="info" class="info-form elementFlex" id="info-form">
+        <div class="image"><img src="../assets/images/logo-shallow-allwhite-resized.png" alt="Logo Shallow Beachwear"></div>
+        <h1>Preencha os campo abaixo para fazer sua inscrição:</h1>
+        <div class="field">
+          <div class="control">
+            <input required type="text" name="name" class="input" placeholder="Seu nome completo aqui*">
+            <span class="icon"><i class="fi fi-rr-user"></i></span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input required type="email" name="email" class="input" placeholder="Seu melhor e-mail*">
+            <span class="icon"><i class="fi fi-rr-at"></i></span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input required type="tel" name="number" class="input" placeholder="Seu WhatsApp com DDD(país e área)*">
+            <span class="icon"><i class="fi fi-brands-whatsapp"></i></span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control elementFlex">
+            <button type="submit" class="btn" id="submit-btn">Concluir</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+  const { createClient } = supabase;
+  const supabaseClient = createClient(
+    'https://tipuesdeimmilskvvlrp.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpcHVlc2RlaW1taWxza3Z2bHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczOTc5NzYsImV4cCI6MjA1Mjk3Mzk3Nn0.k9yrUY2dQk3qMB0kqnih7zX-o8_9vBoOdCUEge37GUc'
+  );
+
+  const form = document.getElementById('info-form');
+  const submitButton = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    submitButton.disabled = true;
+    submitButton.textContent = 'Enviando...';
+
+    try {
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        number: formData.get('number')
+      };
+
+      const { error } = await supabaseClient
+        .from('quiz_database')
+        .insert([data]);
+
+      if (error) {
+        console.error('Erro:', error);
+        alert('Ocorreu um erro, favor tentar novamente');
+        submitButton.disabled = false;
+        submitButton.textContent = 'Concluir';
+      } else {
+        window.location.href = '../thanks/index.html';
+      }
+    } catch (error) {
+      console.error('Erro:', error);
+      alert('Ocorreu um erro, favor tentar novamente');
+      submitButton.disabled = false;
+      submitButton.textContent = 'Concluir';
+    }
+  });
+</script>
+
+</html>

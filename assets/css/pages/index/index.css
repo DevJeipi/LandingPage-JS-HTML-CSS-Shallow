@@ -1,0 +1,6 @@
+@import "../../global/global.css";
+
+/*-------------------------------*/
+
+@import "./partials/responsive.css";
+@import "./partials/style.css";

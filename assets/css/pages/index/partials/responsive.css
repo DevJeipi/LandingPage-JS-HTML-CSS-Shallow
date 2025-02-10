@@ -1,0 +1,328 @@
+@media screen and (max-width: 480px) {
+    /*Seção 2*/
+    section.calculo .centro .box-lucro .explicacao{
+        display: none;
+    }
+    /**/
+
+    /*Seção 4*/
+    .container-cases {
+        flex-direction: column;
+    }
+
+    section.depoimentos .centro .btn {
+        width: 80%;
+    }
+    /**/
+
+    /*Seção 7*/
+    section.lojista .box-lojista {
+        width: 95%;
+    }
+
+    /**/
+
+    /*Seção 9*/
+    section.produtos .centro .box-colecao .modapraia,
+    section.produtos .centro .box-colecao .modafitness {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    section.produtos .centro .box-colecao .slider {
+        max-width: 100%;
+        width: 100%;
+        position: relative;
+    }
+
+    section.produtos .box-colecao .slider .slides {
+        width: 400%;
+        height: 400px;
+    }
+
+    section.produtos .box-colecao .slider .manual-navigation {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: 0;
+        margin: -30px auto 0;
+    }
+
+    section.produtos .box-colecao .slider .slides .navigation-auto {
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+
+    section.produtos .centro {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    section.produtos .box-colecao .slider .slides .slide img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    section.produtos .box-colecao .slider .manual-navigation .manual-btn {
+        width: 10px;
+        height: 10px;
+        padding: 4px;
+    }
+
+    section.produtos .box-colecao .slider .slides .navigation-auto div {
+        width: 10px;
+        height: 10px;
+        padding: 4px;
+    }
+    /**/
+}
+
+@media screen and (max-width: 768px) {
+
+    /*Seção 1*/
+    /*Mobile Display*/
+    section.home .centro .desktop-display {
+        display: none;
+    }
+
+    section.home .centro .mobile-display {
+        display: block;
+    }
+
+    .mobile-display .container-video {
+        width: 100%;
+    }
+
+    .mobile-display .container-video .video-institucional {
+        width: 80%;
+    }
+
+    .mobile-display .container-headline {
+        width: 100%;
+    }
+
+    .mobile-display .container-headline h1,
+    .mobile-display .container-headline span,
+    .mobile-display .container-headline .divider,
+    .mobile-display .container-headline h2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .mobile-display .container-headline .divider {
+        margin: 8px 0;
+    }
+
+    .mobile-display .container-headline .btn {
+        margin-top: 1.5em;
+    }
+
+    /*Fim Mobile Display*/
+
+    section.home .centro header .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 135px;
+    }
+
+    section.home .container-home {
+        flex-direction: column;
+    }
+
+    section.home .container-home .container-video {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    /**/
+
+    /*Seção 3*/
+    .texts {
+        text-align: center;
+    }
+
+    ul.motivos {
+        margin: 1em 0 0 0;
+    }
+
+    ul.motivos li.box {
+        width: 90%;
+    }
+    /**/
+
+    /*Seção 5*/
+    section.pq .fundo-branco{
+        height: 150px;
+    }
+
+    .container-mini-box{
+        flex-direction: column;
+    }
+
+    .container-mini-box .mini-box{
+        width: 95%;
+    }
+    /**/
+
+    /*Seção 6*/
+    section.como-ser img.paint-stain {
+        display: none;
+    }
+
+    section.como-ser .centro .introducao .bg-text {
+        background-color: #ec268e;
+        padding: 3px;
+        border-radius: 6px;
+    }
+
+    section.como-ser .centro .passos-guia {
+        flex-direction: column;
+    }
+
+    /**/
+
+    /*Seção 7 */
+    .counter-wrapper {
+        flex-direction: column;
+        gap: 40px;
+        padding: 30px;
+    }
+
+    .counter {
+        min-width: unset;
+    }
+
+    .count {
+        font-size: 3rem;
+    }
+
+    .counter p {
+        font-size: 1rem;
+    }
+
+    /**/
+
+    /*Seção 10*/
+    .container-faq .faq-item {
+        width: 100%;
+    }
+
+    .container-faq .resposta {
+        width: 95%;
+    }
+
+    /**/
+
+    /*Footer*/
+    footer.rodape.desktop-footer {
+        display: none;
+    }
+
+    footer.rodape.mobile-footer {
+        display: block;
+    }
+
+    /**/
+}
+
+@media screen and (max-width: 900px) {
+
+    /*Seção 2*/
+    section.calculo .centro .box-lucro .passos-venda {
+        justify-content: center;
+    }
+
+    section.calculo .centro .box-lucro .passos-venda>.fi-ss-angle-right {
+        transform: rotate(90deg);
+        margin: 0.5em 0;
+    }
+
+    section.calculo .centro .box-lucro .passos-venda .passo-venda {
+        flex-basis: 100%;
+    }
+
+    /**/
+
+    /*Seção 9*/
+    section.produtos .centro h1 {
+        padding: 2em 0 0 0;
+    }
+
+    section.produtos .centro .box-colecao {
+        justify-content: center;
+    }
+
+    section.produtos .centro .box-colecao .modapraia,
+    section.produtos .centro .box-colecao .modafitness {
+        margin-top: 2em;
+    }
+
+    section.produtos .centro .box-colecao .line {
+        width: 0px;
+    }
+
+    section.produtos .btn {
+        width: 75%;
+    }
+
+    /**/
+}
+
+@media screen and (max-width: 1024px) {
+
+    /*Seção 7*/
+    section.quem-e .centro {
+        flex-direction: column;
+    }
+
+    .container-historia {
+        width: 70%;
+        padding: 8em 0 0 0;
+        text-align: center;
+    }
+
+    .container-historia h1.whitecolor {
+        margin-left: 0;
+    }
+
+    .container {
+        margin-top: 2em;
+    }
+
+    /**/
+
+    /*Seção 8*/
+    .lojista .box-lojista {
+        flex-direction: column;
+    }
+
+    section.lojista .box-lojista .box-mensagem {
+        width: 90%;
+        padding: 1em 2em;
+    }
+
+    section.lojista .box-lojista .box-botao {
+        width: 80%;
+        border-radius: 0 0 1.5em 1.5em;
+        padding: 1em 2em;
+        margin: 0;
+    }
+
+    /**/
+}
+
+@media screen and (max-width: 1100px) {
+    section.pq .container-mini-box .elementFlex .mini-box {
+        flex-basis: 100%;
+    }
+
+    section.como-ser .centro .passos-guia .passo {
+        flex-basis: 40%;
+    }
+}
