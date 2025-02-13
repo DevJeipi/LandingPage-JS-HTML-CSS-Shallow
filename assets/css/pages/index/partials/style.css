@@ -477,6 +477,7 @@ section.como-ser .centro .passos-guia {
 section.como-ser .centro .passos-guia .passo {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
   background-color: #e6e6e6;
+  border: 1px solid #ec258e;
   height: 280px;
   padding: 24px;
   border-radius: 8px;
