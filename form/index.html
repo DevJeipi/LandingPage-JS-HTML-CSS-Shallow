@@ -41,25 +41,27 @@
             <button type="submit" class="btn" id="submit-btn">Concluir</button>
           </div>
         </div>
+        <div id="error-message" class="error-message" style="display: none; color: red; margin-top: 10px; text-align: center;"></div>
       </form>
     </div>
   </section>
 </body>
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
-  const { createClient } = supabase;
-  const supabaseClient = createClient(
+  const supabaseClient = supabase.createClient(
     'https://tipuesdeimmilskvvlrp.supabase.co',
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpcHVlc2RlaW1taWxza3Z2bHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczOTc5NzYsImV4cCI6MjA1Mjk3Mzk3Nn0.k9yrUY2dQk3qMB0kqnih7zX-o8_9vBoOdCUEge37GUc'
   );
 
   const form = document.getElementById('info-form');
   const submitButton = document.getElementById('submit-btn');
+  const errorMessage = document.getElementById('error-message');
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     submitButton.disabled = true;
     submitButton.textContent = 'Enviando...';
+    errorMessage.style.display = 'none';
 
     try {
       const formData = new FormData(form);
@@ -75,7 +77,8 @@
 
       if (error) {
         console.error('Erro:', error);
-        alert('Ocorreu um erro, favor tentar novamente');
+        errorMessage.textContent = 'Ocorreu um erro, favor tentar novamente';
+        errorMessage.style.display = 'block';
         submitButton.disabled = false;
         submitButton.textContent = 'Concluir';
       } else {
@@ -83,7 +86,8 @@
       }
     } catch (error) {
       console.error('Erro:', error);
-      alert('Ocorreu um erro, favor tentar novamente');
+      errorMessage.textContent = 'Ocorreu um erro, favor tentar novamente';
+      errorMessage.style.display = 'block';
       submitButton.disabled = false;
       submitButton.textContent = 'Concluir';
     }
