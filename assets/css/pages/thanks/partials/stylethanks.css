@@ -60,7 +60,7 @@ div.centro {
     text-align: center;
 }
 
-.texts .button{
+.button{
     margin-top: 25px;
     text-align: center;
     display: flex;
@@ -84,4 +84,9 @@ div.centro {
     font-size: 16px;
     display: block;
     line-height: 0;
+}
+
+.button:nth-child(1){
+    width: 100%;
+    margin: 0 auto;
 }
