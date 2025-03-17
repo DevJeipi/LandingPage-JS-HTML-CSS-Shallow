@@ -79,11 +79,7 @@
         .insert([data]);
 
       if (error) {
-        console.error('Erro:', error);
-        errorMessage.textContent = 'Ocorreu um erro, favor tentar novamente';
-        errorMessage.style.display = 'block';
-        submitButton.disabled = false;
-        submitButton.textContent = 'Concluir';
+        throw error;
       } else {
         window.location.href = '../thanks/index.html';
       }
