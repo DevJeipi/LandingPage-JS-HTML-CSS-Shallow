@@ -41,14 +41,15 @@
             <button type="submit" class="btn" id="submit-btn">Concluir</button>
           </div>
         </div>
-        <div id="error-message" class="error-message" style="display: none; color: red; margin-top: 10px; text-align: center; background-color: rgba(242, 242, 242, 0.5); border-radius: 12px;"></div>
+        <div id="error-message" class="error-message" style="display: none; color: rgb(242, 242, 242); margin-top: 10px; text-align: center; background-color: rgba(242, 242, 242, 0.2); border: 1px solid rgb(196, 12, 12); border-radius: 12px; padding: 12px; backdrop-filter: blur(32px);"></div>
       </form>
     </div>
   </section>
 </body>
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
-  const supabaseClient = supabase.createClient(
+  const { createClient } = supabase;
+  const supabaseClient = createClient(
     'https://tipuesdeimmilskvvlrp.supabase.co',
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpcHVlc2RlaW1taWxza3Z2bHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczOTc5NzYsImV4cCI6MjA1Mjk3Mzk3Nn0.k9yrUY2dQk3qMB0kqnih7zX-o8_9vBoOdCUEge37GUc'
   );
