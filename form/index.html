@@ -16,7 +16,8 @@
   <section class="form">
     <div class="centro elementFlex">
       <form name="info" class="info-form elementFlex" id="info-form">
-        <div class="image"><img src="../assets/images/logo-shallow-allwhite-resized.png" alt="Logo Shallow Beachwear"></div>
+        <div class="image"><img src="../assets/images/logo-shallow-allwhite-resized.png" alt="Logo Shallow Beachwear">
+        </div>
         <h1>Preencha os campo abaixo para fazer sua inscrição:</h1>
         <div class="field">
           <div class="control">
@@ -41,15 +42,16 @@
             <button type="submit" class="btn" id="submit-btn">Concluir</button>
           </div>
         </div>
-        <div id="error-message" class="error-message" style="display: none; color: rgb(242, 242, 242); margin-top: 10px; text-align: center; background-color: rgba(242, 242, 242, 0.2); border: 1px solid rgb(196, 12, 12); border-radius: 12px; padding: 12px; backdrop-filter: blur(32px);"></div>
+        <div id="error-message" class="error-message"
+          style="display: none; color: rgb(242, 242, 242); margin-top: 10px; text-align: center; background-color: rgba(242, 242, 242, 0.2); border: 1px solid rgb(196, 12, 12); border-radius: 12px; padding: 12px; backdrop-filter: blur(32px);">
+        </div>
       </form>
     </div>
   </section>
 </body>
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
 <script>
-  const { createClient } = supabase;
-  const supabaseClient = createClient(
+  const supabaseClient = supabase.createClient(
     'https://tipuesdeimmilskvvlrp.supabase.co',
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpcHVlc2RlaW1taWxza3Z2bHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczOTc5NzYsImV4cCI6MjA1Mjk3Mzk3Nn0.k9yrUY2dQk3qMB0kqnih7zX-o8_9vBoOdCUEge37GUc'
   );
