@@ -1,5 +1,16 @@
 User-agent: *
 Allow: /
+Crawl-delay: 10
 
 # Sitemap
 Sitemap: https://revendedoras.shallow.com.br/sitemap.xml
+
+# Regras específicas para Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 5
+
+# Regras específicas para Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 5
