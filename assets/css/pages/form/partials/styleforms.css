@@ -19,6 +19,11 @@ div.centro {
     flex-wrap: wrap;
 }
 
+:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
 /**/
 
 .form {
@@ -74,6 +79,7 @@ div.centro {
     width: 100%;
     padding: 8px 12px 8px 40px;
     background: rgba(255, 255, 255, 0.35);
+
     border: none;
     border-radius: 36px;
     color: white;
@@ -110,4 +116,37 @@ div.centro {
 .form .info-form .field .control .btn:hover {
     transform: scale(1.05);
     transition: all 0.4s;
+}
+
+.phone-field {
+    display: flex;    
+    align-items: center;
+    gap: 10px; /* Espaço entre o select e o campo de número */
+}
+
+.phone-field .country-code {
+    width: 30%; /* Ajuste o tamanho do select */
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.35);
+    border: none;
+    border-radius: 36px;
+    color: white;
+}
+
+.phone-field .country-code option {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.form .info-form .field .phone-field .phone-number {
+    flex: 1; /* Faz o campo de número ocupar o restante do espaço */
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.35);
+    border: none;
+    border-radius: 36px;
+    color: white;
+}
+
+.phone-field .phone-number::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }

@@ -32,9 +32,61 @@
           </div>
         </div>
         <div class="field">
-          <div class="control">
-            <input required type="tel" name="number" class="input" placeholder="Seu WhatsApp com DDD(país e área)*">
-            <span class="icon"><i class="fi fi-brands-whatsapp"></i></span>
+          <div class="control elementFlex phone-field">
+            <select required name="country-code" class="country-code">
+              <option value="" disabled selected>DDD País</option>
+              <!-- América -->
+              <option value="+54">+54 (Argentina)</option>
+              <option value="+55">+55 (Brasil)</option>
+              <option value="+53">+53 (Cuba)</option>
+              <option value="+506">+506 (Costa Rica)</option>
+              <option value="+503">+503 (El Salvador)</option>
+              <option value="+502">+502 (Guatemala)</option>
+              <option value="+504">+504 (Honduras)</option>
+              <option value="+505">+505 (Nicarágua)</option>
+              <option value="+507">+507 (Panamá)</option>
+              <option value="+51">+51 (Peru)</option>
+              <option value="+59">+59 (Caribe - genérico)</option>
+              <option value="+1">+1 (EUA/Canadá)</option>
+              <option value="+52">+52 (México)</option>
+              <option value="+58">+58 (Venezuela)</option>
+              <option value="+57">+57 (Colômbia)</option>
+              <option value="+56">+56 (Chile)</option>
+              <!-- Europa -->
+              <option value="+43">+43 (Áustria)</option>
+              <option value="+32">+32 (Bélgica)</option>
+              <option value="+375">+375 (Bielorrússia)</option>
+              <option value="+359">+359 (Bulgária)</option>
+              <option value="+357">+357 (Chipre)</option>
+              <option value="+385">+385 (Croácia)</option>
+              <option value="+45">+45 (Dinamarca)</option>
+              <option value="+421">+421 (Eslováquia)</option>
+              <option value="+386">+386 (Eslovênia)</option>
+              <option value="+34">+34 (Espanha)</option>
+              <option value="+372">+372 (Estônia)</option>
+              <option value="+358">+358 (Finlândia)</option>
+              <option value="+33">+33 (França)</option>
+              <option value="+30">+30 (Grécia)</option>
+              <option value="+36">+36 (Hungria)</option>
+              <option value="+353">+353 (Irlanda)</option>
+              <option value="+39">+39 (Itália)</option>
+              <option value="+371">+371 (Letônia)</option>
+              <option value="+370">+370 (Lituânia)</option>
+              <option value="+356">+356 (Malta)</option>
+              <option value="+31">+31 (Holanda)</option>
+              <option value="+47">+47 (Noruega)</option>
+              <option value="+48">+48 (Polônia)</option>
+              <option value="+351">+351 (Portugal)</option>
+              <option value="+40">+40 (Romênia)</option>
+              <option value="+7">+7 (Rússia)</option>
+              <option value="+46">+46 (Suécia)</option>
+              <option value="+41">+41 (Suíça)</option>
+              <option value="+380">+380 (Ucrânia)</option>
+              <option value="+44">+44 (Reino Unido)</option>
+              <option value="+49">+49 (Alemanha)</option>
+              <option value="+420">+420 (República Tcheca)</option>
+            </select>
+            <input required type="tel" name="number" class="input phone-number" placeholder="DDD Estadual + Número*">
           </div>
         </div>
         <div class="field">
@@ -51,44 +103,68 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
 <script>
-  const supabaseClient = supabase.createClient(
-    'https://tipuesdeimmilskvvlrp.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpcHVlc2RlaW1taWxza3Z2bHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczOTc5NzYsImV4cCI6MjA1Mjk3Mzk3Nn0.k9yrUY2dQk3qMB0kqnih7zX-o8_9vBoOdCUEge37GUc'
-  );
+  // Configuração do cliente Supabase
+  const supabaseUrl = 'https://tipuesdeimmilskvvlrp.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpcHVlc2RlaW1taWxza3Z2bHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczOTc5NzYsImV4cCI6MjA1Mjk3Mzk3Nn0.k9yrUY2dQk3qMB0kqnih7zX-o8_9vBoOdCUEge37GUc';
+  
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-  const form = document.getElementById('info-form');
-  const submitButton = document.getElementById('submit-btn');
-  const errorMessage = document.getElementById('error-message');
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('info-form');
+    const submitButton = document.getElementById('submit-btn');
+    const errorMessage = document.getElementById('error-message');
 
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    submitButton.disabled = true;
-    submitButton.textContent = 'Enviando...';
-    errorMessage.style.display = 'none';
+    if (!form) {
+      console.error('Formulário não encontrado!');
+      return;
+    }
 
-    try {
-      const formData = new FormData(form);
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        number: formData.get('number')
-      };
-
-      const { error } = await supabaseClient
-        .from('quiz_database')
-        .insert([data]);
-
-      if (error) {
-        throw error;
-      } else {
-        window.location.href = '../thanks/';
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      
+      // Validação básica
+      const name = form.elements['name']?.value.trim();
+      const email = form.elements['email']?.value.trim();
+      const number = `${form.elements['country-code']?.value}${form.elements['number']?.value}`;
+      
+      if (!name || !email || !number) {
+        showError('Preencha todos os campos obrigatórios');
+        return;
       }
-    } catch (error) {
-      console.error('Erro:', error);
-      errorMessage.textContent = 'Ocorreu um erro, favor tentar novamente';
+
+      // UI feedback
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando...';
+      errorMessage.style.display = 'none';
+
+      try {
+        const { error } = await supabaseClient
+          .from('quiz_database')
+          .insert([{
+            name,
+            email,
+            number
+          }]);
+
+        if (error) {
+          throw error;
+        }
+        
+        // Redirecionamento após sucesso
+        window.location.href = '../obrigado';
+        
+      } catch (error) {
+        console.error('Erro ao enviar dados:', error);
+        showError('Ocorreu um erro. Por favor, tente novamente.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Concluir';
+      }
+    });
+
+    function showError(message) {
+      errorMessage.textContent = message;
       errorMessage.style.display = 'block';
-      submitButton.disabled = false;
-      submitButton.textContent = 'Concluir';
     }
   });
 </script>
