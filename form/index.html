@@ -94,79 +94,34 @@
             <button type="submit" class="btn" id="submit-btn">Concluir</button>
           </div>
         </div>
-        <div id="error-message" class="error-message"
-          style="display: none; color: rgb(242, 242, 242); margin-top: 10px; text-align: center; background-color: rgba(242, 242, 242, 0.2); border: 1px solid rgb(196, 12, 12); border-radius: 12px; padding: 12px; backdrop-filter: blur(32px);">
-        </div>
       </form>
     </div>
   </section>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
 <script>
-  // Configuração do cliente Supabase
-  const supabaseUrl = 'https://tipuesdeimmilskvvlrp.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpcHVlc2RlaW1taWxza3Z2bHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczOTc5NzYsImV4cCI6MjA1Mjk3Mzk3Nn0.k9yrUY2dQk3qMB0kqnih7zX-o8_9vBoOdCUEge37GUc';
-  
-  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+  document.getElementById('info-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('info-form');
-    const submitButton = document.getElementById('submit-btn');
-    const errorMessage = document.getElementById('error-message');
+    const form = e.target;
+    const nome = form.name.value;
+    const email = form.email.value;
+    const dddPais = form['country-code'].value;
+    const telefone = dddPais + form.number.value;
 
-    if (!form) {
-      console.error('Formulário não encontrado!');
-      return;
-    }
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      
-      // Validação básica
-      const name = form.elements['name']?.value.trim();
-      const email = form.elements['email']?.value.trim();
-      const number = `${form.elements['country-code']?.value}${form.elements['number']?.value}`;
-      
-      if (!name || !email || !number) {
-        showError('Preencha todos os campos obrigatórios');
-        return;
-      }
-
-      // UI feedback
-      submitButton.disabled = true;
-      submitButton.textContent = 'Enviando...';
-      errorMessage.style.display = 'none';
-
-      try {
-        const { error } = await supabaseClient
-          .from('quiz_database')
-          .insert([{
-            name,
-            email,
-            number
-          }]);
-
-        if (error) {
-          throw error;
-        }
-        
-        // Redirecionamento após sucesso
-        window.location.href = '../obrigado';
-        
-      } catch (error) {
-        console.error('Erro ao enviar dados:', error);
-        showError('Ocorreu um erro. Por favor, tente novamente.');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Concluir';
-      }
+    const resposta = await fetch('http://localhost:3000/api/enviar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, email, telefone })
     });
 
-    function showError(message) {
-      errorMessage.textContent = message;
-      errorMessage.style.display = 'block';
+    if (resposta.ok) {
+      window.location.href = '../obrigado';
+      form.reset();
+    } else {
+      alert('Erro ao enviar os dados!');
     }
   });
+
 </script>
 
 </html>
