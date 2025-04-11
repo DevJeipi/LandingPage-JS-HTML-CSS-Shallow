@@ -123,7 +123,7 @@
     const telefone = dddPais + numero;
   
     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const numeroValido = /^\d{8,15}$/.test(numero);
+    const numeroValido = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/.test(numero);
   
     if (!nome || !email || !numero) {
       showToast('Por favor, preencha todos os campos obrigatórios.', 'error');
