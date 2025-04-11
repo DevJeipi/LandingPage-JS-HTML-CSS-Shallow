@@ -150,3 +150,37 @@ div.centro {
 .phone-field .phone-number::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
+
+/*TOAST*/
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  
+  .toast {
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    animation: fadeInOut 4s ease forwards;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+  
+  .toast.success {
+    background-color: #28a745;
+  }
+  
+  .toast.error {
+    background-color: #dc3545;
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(100%); }
+    10%, 90% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(100%); }
+  }
