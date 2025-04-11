@@ -20,12 +20,7 @@ app.post('/api/enviar', async (req, res) => {
         email,
         firstName: nome,
         phone: telefone,
-        lists: [
-          {
-            list: 4, // ID da lista aqui
-            status: 1 // 1=subscribed, 2=unsubscribed 
-          }
-        ]
+        lists: [4] //ID da lista
       }
     }, {
       headers: {
@@ -42,5 +37,5 @@ app.post('/api/enviar', async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log('Servidor rodando em http://localhost:3000');
+  console.log('Servidor rodando em https://api-shallow.onrender.com');
 });
