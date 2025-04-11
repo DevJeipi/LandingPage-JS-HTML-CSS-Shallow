@@ -15,12 +15,12 @@ app.post('/api/enviar', async (req, res) => {
   const { nome, email, telefone } = req.body;
 
   try {
-    const response = await axios.post(API_URL, {
+    // 1. Criar contato
+    const response = await axios.post(`${API_URL}/contacts`, {
       contact: {
         email,
         firstName: nome,
         phone: telefone,
-        lists: [4] //ID da lista
       }
     }, {
       headers: {
@@ -29,7 +29,23 @@ app.post('/api/enviar', async (req, res) => {
       }
     });
 
-    res.status(200).json(response.data);
+    const contactId = response.data.contact.id;
+
+    // 2. Associar contato à lista (ID = 4)
+    await axios.post(`${API_URL}/contactLists`, {
+      contactList: {
+        list: 4,        // ID da lista
+        contact: contactId,
+        status: 1       // 1 = subscribed
+      }
+    }, {
+      headers: {
+        'Api-Token': API_KEY,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    res.status(200).json({ mensagem: 'Contato adicionado e inscrito com sucesso!' });
   } catch (err) {
     console.error("Erro no try/catch:", err);
     res.status(500).json({ erro: 'Erro ao enviar para o ActiveCampaign' });
