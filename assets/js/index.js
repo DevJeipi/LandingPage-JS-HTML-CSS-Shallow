@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 const API_KEY = '6459226b857ce0283df252b9c1bc9fc63a2cbcd0a3a3e6b697fc08d246c23ccb465f904f';
-const API_URL = 'https://multigamer362.api-us1.com/api/3/contacts';
+const API_URL = 'https://multigamer362.api-us1.com/api/3';
 
 app.post('/api/enviar', async (req, res) => {
   console.log("Chegou no backend com:", req.body);
