@@ -108,7 +108,7 @@
     const dddPais = form['country-code'].value;
     const telefone = dddPais + form.number.value;
 
-    const resposta = await fetch('http://localhost:3000/api/enviar', {
+    const resposta = await fetch('https://api-shallow.onrender.com/api/enviar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nome, email, telefone })
