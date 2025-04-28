@@ -949,8 +949,7 @@ section.faq .titulo-perguntas h1.whitecolor {
 .container-faq input#abrir-question-1:checked~.active-1>i,
 .container-faq input#abrir-question-2:checked~.active-2>i,
 .container-faq input#abrir-question-3:checked~.active-3>i,
-.container-faq input#abrir-question-4:checked~.active-4>i,
-.container-faq input#abrir-question-5:checked~.active-5>i {
+.container-faq input#abrir-question-4:checked~.active-4>i {
   transform: rotate(90deg);
 }
 
@@ -993,26 +992,16 @@ section.faq .titulo-perguntas h1.whitecolor {
 
 .container-faq input#abrir-question-4:checked~.faq-answer-4 {
   display: block;
-}
-
-.container-faq input#abrir-question-5,
-.container-faq .faq-answer-5 {
-  display: none;
-}
-
-.container-faq .margin {
-  margin-bottom: 3.125em;
-}
-
-.container-faq input#abrir-question-5:checked~.margin {
-  margin-bottom: 0px;
-}
-
-.container-faq input#abrir-question-5:checked~.faq-answer-5 {
-  display: block;
   margin-bottom: 3em;
 }
 
+.container-faq label:nth-of-type(4) {
+  margin-bottom: 3.125em;
+}
+
+.container-faq input#abrir-question-4:checked~label:nth-of-type(4) {
+  margin-bottom: 0px;
+}
 /**/
 
 /*Footer*/
