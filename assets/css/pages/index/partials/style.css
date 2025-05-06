@@ -26,7 +26,7 @@ div.centro {
 }
 
 span.pinkcolor {
-  color: #ec258e;
+  color: #f80084;
 }
 
 .whitecolor {
@@ -117,9 +117,9 @@ section.home .container-home {
   align-items: center;
   justify-content: center;
   border-radius: 36px;
-  background-color: #ec258e;
+  background-color: #f80084;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   font-size: 17px;
   font-family: var(--font);
@@ -139,7 +139,7 @@ section.home .container-home {
 }
 
 .btn span:after {
-  content: '»';
+  content: "»";
   position: absolute;
   opacity: 0;
   top: 0;
@@ -198,7 +198,7 @@ section.calculo .centro .title {
 
 section.calculo .centro .box-lucro {
   width: 100%;
-  background-color: #ec258e;
+  background-color: #f80084;
   color: #fff;
   padding: 2em;
 }
@@ -208,7 +208,7 @@ section.calculo .centro .box-lucro .passos-venda {
   padding: 1.5em 0;
 }
 
-section.calculo .centro .box-lucro .passos-venda>.fi-ss-angle-right {
+section.calculo .centro .box-lucro .passos-venda > .fi-ss-angle-right {
   font-size: 28px;
 }
 
@@ -223,7 +223,7 @@ section.calculo .centro .box-lucro .passos-venda .passo-venda {
 section.calculo .centro .box-lucro .passos-venda .passo-venda p {
   font-weight: bold;
   background-color: #fff;
-  color: #ec258e;
+  color: #f80084;
   padding: 3px;
   border-radius: 6px;
 }
@@ -333,8 +333,8 @@ section.depoimentos .centro h1 {
   font-weight: 500;
 }
 
-.container-cases .case h1>.bg-text {
-  background-color: #ec258e;
+.container-cases .case h1 > .bg-text {
+  background-color: #f80084;
   color: #fff;
   padding: 2px;
   border-radius: 4px;
@@ -353,7 +353,7 @@ section.depoimentos .centro .btn {
 /*Seção 5*/
 section.pq {
   width: 100%;
-  background-color: #ec258e;
+  background-color: #f80084;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -370,7 +370,7 @@ section.pq .title {
 
 section.pq .title .bg-text {
   background-color: #fff;
-  color: #ec258e;
+  color: #f80084;
   border-radius: 3px;
   margin: 0 0.25em;
 }
@@ -492,7 +492,7 @@ section.como-ser .centro .passos-guia {
 section.como-ser .centro .passos-guia .passo {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
   background-color: #e6e6e6;
-  border: 1px solid #ec258e;
+  border: 1px solid #f80084;
   height: 280px;
   padding: 24px;
   border-radius: 8px;
@@ -518,7 +518,7 @@ section.como-ser .centro .passos-guia .passo p {
 }
 
 section.como-ser .centro .passos-guia .passo .box-icon {
-  background-color: #ec258e;
+  background-color: #f80084;
   padding: 12px 36px;
   box-shadow: inset 0 0 10px #ae1667;
   border-radius: 12px;
@@ -546,7 +546,7 @@ section.como-ser .centro span.elementFlex {
 
 /*Seção 7*/
 section.quem-e {
-  background: linear-gradient(90deg, #ec258e 0%, #dc4b99 60%);
+  background: linear-gradient(90deg, #f80084 0%, #dc4b99 60%);
   width: 100%;
   position: relative;
 }
@@ -579,7 +579,7 @@ section.quem-e div.centro {
   margin: 2em 0 0 0;
   width: 100%;
   background-color: #f2f2f2;
-  color: #ec258e;
+  color: #f80084;
   border: 1px solid #f2f2f2;
   box-shadow: 0px 4px 12px 4px rgba(0, 0, 0, 0.4);
 }
@@ -635,7 +635,7 @@ section.quem-e span.elementFlex {
   font-weight: 700;
   color: #f3f4f6;
   margin-bottom: 10px;
-  text-shadow: 0 0 10px rgba(236, 37, 142, 0.5);
+  text-shadow: 0 0 10px rgba(248, 0, 132, 0.5);
 }
 
 .counter p {
@@ -651,7 +651,7 @@ section.quem-e span.elementFlex {
 section.lojista {
   width: 100%;
   height: auto;
-  background: linear-gradient(90deg, #ec258e 0%, #dc4b99 60%);
+  background: linear-gradient(90deg, #f80084 0%, #dc4b99 60%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -702,9 +702,9 @@ section.lojista .box-lojista .box-botao {
 }
 
 section.lojista .btn {
-  background-color: #ec258e;
+  background-color: #f80084;
   color: #fff;
-  border: 1px solid #ec258e;
+  border: 1px solid #f80084;
   box-shadow: 0px 4px 12px 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -786,31 +786,35 @@ section.produtos .box-colecao .slider .manual-navigation .manual-btn {
   transition: 0.8s;
 }
 
-section.produtos .box-colecao .slider .manual-navigation .manual-btn:not(:last-child) {
+section.produtos
+  .box-colecao
+  .slider
+  .manual-navigation
+  .manual-btn:not(:last-child) {
   margin-right: 15px;
 }
 
 section.produtos .box-colecao .slider .manual-navigation .manual-btn:hover {
-  background-color: #ec258e;
+  background-color: #f80084;
 }
 
-#radio1-left:checked~.first,
-#radio1-right:checked~.first {
+#radio1-left:checked ~ .first,
+#radio1-right:checked ~ .first {
   margin-left: 0;
 }
 
-#radio2-left:checked~.first,
-#radio2-right:checked~.first {
+#radio2-left:checked ~ .first,
+#radio2-right:checked ~ .first {
   margin-left: -25%;
 }
 
-#radio3-left:checked~.first,
-#radio3-right:checked~.first {
+#radio3-left:checked ~ .first,
+#radio3-right:checked ~ .first {
   margin-left: -50%;
 }
 
-#radio4-left:checked~.first,
-#radio4-right:checked~.first {
+#radio4-left:checked ~ .first,
+#radio4-right:checked ~ .first {
   margin-left: -75%;
 }
 
@@ -830,18 +834,23 @@ section.produtos .box-colecao .slider .slides .navigation-auto {
   justify-content: center;
 }
 
-section.produtos .box-colecao .slider .slides .navigation-auto div:not(:last-child) {
+section.produtos
+  .box-colecao
+  .slider
+  .slides
+  .navigation-auto
+  div:not(:last-child) {
   margin-right: 15px;
 }
 
-#radio1-left:checked~.navigation-auto .auto-btn1,
-#radio2-left:checked~.navigation-auto .auto-btn2,
-#radio3-left:checked~.navigation-auto .auto-btn3,
-#radio4-left:checked~.navigation-auto .auto-btn4,
-#radio1-right:checked~.navigation-auto .auto-btn1,
-#radio2-right:checked~.navigation-auto .auto-btn2,
-#radio3-right:checked~.navigation-auto .auto-btn3,
-#radio4-right:checked~.navigation-auto .auto-btn4 {
+#radio1-left:checked ~ .navigation-auto .auto-btn1,
+#radio2-left:checked ~ .navigation-auto .auto-btn2,
+#radio3-left:checked ~ .navigation-auto .auto-btn3,
+#radio4-left:checked ~ .navigation-auto .auto-btn4,
+#radio1-right:checked ~ .navigation-auto .auto-btn1,
+#radio2-right:checked ~ .navigation-auto .auto-btn2,
+#radio3-right:checked ~ .navigation-auto .auto-btn3,
+#radio4-right:checked ~ .navigation-auto .auto-btn4 {
   background-color: #000;
 }
 
@@ -862,7 +871,7 @@ section.produtos .line {
 
 section.produtos h2.elementFlex {
   font-size: 20px;
-  background-color: #ec258e;
+  background-color: #f80084;
   color: #fff;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -874,8 +883,12 @@ section.produtos h2.elementFlex {
 /*Seção 10*/
 section.faq {
   height: auto;
-  background: rgb(236, 37, 142);
-  background: linear-gradient(180deg, rgba(236, 37, 142, 1) 0%, rgb(211, 74, 147) 70%);
+  background: rgba(248, 0, 132, 1);
+  background: linear-gradient(
+    180deg,
+    rgba(248, 0, 132, 1) 0%,
+    rgb(211, 74, 147) 70%
+  );
   position: relative;
 }
 
@@ -914,7 +927,7 @@ section.faq .titulo-perguntas h1.whitecolor {
 }
 
 .container-faq .faq-item {
-  background: rgba(236, 37, 142, 0.3);
+  background: rgba(248, 0, 132, 0.3);
   width: 600px;
   height: 75px;
   padding: 1.125em;
@@ -943,13 +956,13 @@ section.faq .titulo-perguntas h1.whitecolor {
 }
 
 .container-faq .faq-item i {
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
-.container-faq input#abrir-question-1:checked~.active-1>i,
-.container-faq input#abrir-question-2:checked~.active-2>i,
-.container-faq input#abrir-question-3:checked~.active-3>i,
-.container-faq input#abrir-question-4:checked~.active-4>i {
+.container-faq input#abrir-question-1:checked ~ .active-1 > i,
+.container-faq input#abrir-question-2:checked ~ .active-2 > i,
+.container-faq input#abrir-question-3:checked ~ .active-3 > i,
+.container-faq input#abrir-question-4:checked ~ .active-4 > i {
   transform: rotate(90deg);
 }
 
@@ -963,7 +976,7 @@ section.faq .titulo-perguntas h1.whitecolor {
   display: none;
 }
 
-.container-faq input#abrir-question-1:checked~.faq-answer-1 {
+.container-faq input#abrir-question-1:checked ~ .faq-answer-1 {
   display: block;
 }
 
@@ -972,7 +985,7 @@ section.faq .titulo-perguntas h1.whitecolor {
   display: none;
 }
 
-.container-faq input#abrir-question-2:checked~.faq-answer-2 {
+.container-faq input#abrir-question-2:checked ~ .faq-answer-2 {
   display: block;
 }
 
@@ -981,7 +994,7 @@ section.faq .titulo-perguntas h1.whitecolor {
   display: none;
 }
 
-.container-faq input#abrir-question-3:checked~.faq-answer-3 {
+.container-faq input#abrir-question-3:checked ~ .faq-answer-3 {
   display: block;
 }
 
@@ -990,7 +1003,7 @@ section.faq .titulo-perguntas h1.whitecolor {
   display: none;
 }
 
-.container-faq input#abrir-question-4:checked~.faq-answer-4 {
+.container-faq input#abrir-question-4:checked ~ .faq-answer-4 {
   display: block;
   margin-bottom: 3em;
 }
@@ -999,7 +1012,7 @@ section.faq .titulo-perguntas h1.whitecolor {
   margin-bottom: 3.125em;
 }
 
-.container-faq input#abrir-question-4:checked~label:nth-of-type(4) {
+.container-faq input#abrir-question-4:checked ~ label:nth-of-type(4) {
   margin-bottom: 0px;
 }
 /**/
@@ -1036,7 +1049,7 @@ footer.rodape .at-rs {
 }
 
 .rodape .at-rs h1 {
-  color: #ec258e;
+  color: #f80084;
   font-size: 1.2em;
 }
 
@@ -1072,7 +1085,7 @@ footer.rodape .at-rs {
 }
 
 .rodape .at-rs li a:hover {
-  color: #ec258e;
+  color: #f80084;
   transition: all 0.4s;
 }
 
