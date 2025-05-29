@@ -49,7 +49,7 @@ section.home .centro .mobile-display {
 section.home {
   width: 100%;
   padding-bottom: 5em;
-  background: url(../../../../images/fundofachada.png);
+  background: url(../../../../images/fundofachada.webp);
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
@@ -728,6 +728,7 @@ section.produtos .box-colecao .slider {
   border-bottom-left-radius: 32px;
   contain: layout style;
   content-visibility: auto;
+  will-change: transform;
 }
 
 section.produtos .box-colecao .slider .slides {
