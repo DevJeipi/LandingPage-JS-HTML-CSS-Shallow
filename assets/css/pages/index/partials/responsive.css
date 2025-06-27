@@ -288,6 +288,22 @@
     margin-left: 0;
   }
 
+  .box-qe {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .box-qe .container-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box-qe .container-p p.whitecolor {
+    text-align: center;
+  }
+
   .container {
     margin-top: 2em;
   }

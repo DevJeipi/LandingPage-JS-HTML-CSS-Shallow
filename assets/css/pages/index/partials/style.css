@@ -546,7 +546,7 @@ section.quem-e div.centro {
 }
 
 .container-historia {
-  width: 50%;
+  width: 100%;
   padding: 5em 3em 4em 0;
   z-index: 1;
   position: relative;
@@ -557,8 +557,9 @@ section.quem-e div.centro {
   padding-bottom: 0.5em;
 }
 
-.container-historia p.whitecolor {
-  text-align: justify;
+.box-qe .container-p p.whitecolor {
+  text-align: left;
+  font-size: 1.5em;
 }
 
 .container-historia .btn {
@@ -574,6 +575,34 @@ section.quem-e div.centro {
   background: none;
   color: #f2f2f2;
   border: 1px solid transparent;
+}
+
+.box-qe {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  position: relative;
+}
+
+.box-qe .container-img {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.box-qe .container-img .img-inside-box {
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+}
+
+.box-qe .container-p {
+  flex: 1;
+  position: sticky;
+  top: 40px;
+  align-self: flex-start;
 }
 
 section.quem-e .divisao-rasgo {
