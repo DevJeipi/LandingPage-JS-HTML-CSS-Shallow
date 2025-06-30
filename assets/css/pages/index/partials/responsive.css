@@ -16,6 +16,21 @@
   /**/
 
   /*Seção 7*/
+  section.quem-e .centro {
+    padding: 0;
+  }
+
+  .box-qe .container-img .img-inside-box {
+    width: 100%;
+    height: 100%;
+  }
+
+  .box-qe .container-p {
+    padding: 0 1em;
+  }
+  /**/
+
+  /*Seção 8*/
   section.lojista .box-lojista {
     width: 95%;
   }
@@ -187,6 +202,28 @@
   /**/
 
   /*Seção 7 */
+  .box-qe {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .box-qe .container-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+
+  .box-qe .container-img .img-inside-box {
+    border-radius: 0;
+  }
+
+  .box-qe .container-p p.whitecolor {
+    text-align: justify;
+  }
+
   .counter-wrapper {
     flex-direction: column;
     gap: 40px;
@@ -279,29 +316,13 @@
   }
 
   .container-historia {
-    width: 70%;
+    width: 100%;
     padding: 8em 0 0 0;
     text-align: center;
   }
 
   .container-historia h1.whitecolor {
     margin-left: 0;
-  }
-
-  .box-qe {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .box-qe .container-img {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .box-qe .container-p p.whitecolor {
-    text-align: center;
   }
 
   .container {
