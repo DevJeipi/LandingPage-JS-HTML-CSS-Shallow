@@ -97,44 +97,33 @@
 
 @media screen and (max-width: 768px) {
   /*Seção 1*/
-  /*Mobile Display*/
-  section.home .centro .desktop-display {
-    display: none;
-  }
-
-  section.home .centro .mobile-display {
-    display: block;
-  }
-
-  .mobile-display .container-video {
+  .desktop-display .container-video {
     width: 100%;
   }
 
-  .mobile-display .container-video .video-institucional {
+  .desktop-display .container-video .video-institucional {
     width: 80%;
   }
 
-  .mobile-display .container-headline {
+  .desktop-display .container-headline {
     width: 100%;
   }
 
-  .mobile-display .container-headline h1,
-  .mobile-display .container-headline span,
-  .mobile-display .container-headline .divider,
-  .mobile-display .container-headline h2 {
+  .desktop-display .container-headline h1,
+  .desktop-display .container-headline span,
+  .desktop-display .container-headline .divider,
+  .desktop-display .container-headline h2 {
     width: 100%;
     text-align: center;
   }
 
-  .mobile-display .container-headline .divider {
+  .desktop-display .container-headline .divider {
     margin: 8px 0;
   }
 
-  .mobile-display .container-headline .btn {
+  .desktop-display .container-headline .btn {
     margin-top: 1.5em;
   }
-
-  /*Fim Mobile Display*/
 
   section.home .centro header .logo {
     display: flex;
