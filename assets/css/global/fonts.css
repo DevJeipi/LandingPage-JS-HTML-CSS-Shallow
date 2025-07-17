@@ -1,4 +1,16 @@
-@import url('https://fonts.cdnfonts.com/css/neo-sans-pro');
+@font-face {
+  font-family: "Neo Sans Pro";
+  src: url("../../fonts/NeoSansProRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neo Sans Pro";
+  src: url("../../fonts/NeoSansProBold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
 
 :root {
   --font: "Neo Sans Pro", sans-serif;
