@@ -49,10 +49,20 @@ section.home .centro .mobile-display {
 section.home {
   width: 100%;
   padding-bottom: 5em;
-  background: url(../../../../images/fundofachada.webp);
-  background-position: bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
+  position: relative;
+}
+
+section.home .bg-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1000;
+  pointer-events: none;
 }
 
 header {
