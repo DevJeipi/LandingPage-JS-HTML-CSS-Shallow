@@ -173,6 +173,7 @@ section.home .container-home {
 .container-headline h2 {
   font-size: 1em;
   font-weight: 300;
+  margin-bottom: 1em;
 }
 
 .divider {
@@ -205,12 +206,13 @@ section.calculo .centro .box-lucro .passos-venda {
   padding: 1.5em 0;
 }
 
-section.calculo .centro .box-lucro .passos-venda > .fi-ss-angle-right {
+section.calculo .centro .box-lucro .passos-venda > .fa-chevron-right {
   font-size: 28px;
 }
 
 section.calculo .centro .box-lucro .passos-venda .passo-venda i {
   font-size: 48px;
+  margin-bottom: 0.2em;
 }
 
 section.calculo .centro .box-lucro .passos-venda .passo-venda {

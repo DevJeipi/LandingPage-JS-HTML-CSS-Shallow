@@ -262,7 +262,7 @@
     justify-content: center;
   }
 
-  section.calculo .centro .box-lucro .passos-venda > .fi-ss-angle-right {
+  section.calculo .centro .box-lucro .passos-venda > .fa-chevron-right {
     transform: rotate(90deg);
     margin: 0.5em 0;
   }
