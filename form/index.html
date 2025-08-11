@@ -1,168 +1,239 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../assets/favicon/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css"
+    />
+    <link rel="stylesheet" href="../assets/css/pages/form/index.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-NS2LVTQB");
+    </script>
+    <!-- End Google Tag Manager -->
+    <title>Formulário de inscrição | Shallow Beachwear</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../assets/favicon/favicon.ico" type="image/x-icon">
-  <link rel='stylesheet'
-    href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
-  <link rel="stylesheet" href="../assets/css/pages/form/index.css">
-  <title>Formulário de inscrição | Shallow Beachwear</title>
-</head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NS2LVTQB"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <section class="form">
+      <div class="centro elementFlex">
+        <form name="info" class="info-form elementFlex" id="info-form">
+          <div class="image">
+            <img
+              src="../assets/images/logo-shallow-allwhite-resized.png"
+              alt="Logo Shallow Beachwear"
+            />
+          </div>
+          <h1>Preencha os campo abaixo para fazer sua inscrição:</h1>
+          <div class="field">
+            <div class="control">
+              <input
+                required
+                type="text"
+                name="name"
+                class="input"
+                placeholder="Seu nome completo aqui*"
+              />
+              <span class="icon"><i class="fi fi-rr-user"></i></span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <input
+                required
+                type="email"
+                name="email"
+                class="input"
+                placeholder="Seu melhor e-mail*"
+              />
+              <span class="icon"><i class="fi fi-rr-at"></i></span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control elementFlex phone-field">
+              <select required name="country-code" class="country-code">
+                <option value="" disabled selected>DDD País</option>
+                <!-- América -->
+                <option value="+54">+54 (Argentina)</option>
+                <option value="+55">+55 (Brasil)</option>
+                <option value="+53">+53 (Cuba)</option>
+                <option value="+506">+506 (Costa Rica)</option>
+                <option value="+503">+503 (El Salvador)</option>
+                <option value="+502">+502 (Guatemala)</option>
+                <option value="+504">+504 (Honduras)</option>
+                <option value="+505">+505 (Nicarágua)</option>
+                <option value="+507">+507 (Panamá)</option>
+                <option value="+51">+51 (Peru)</option>
+                <option value="+59">+59 (Caribe - genérico)</option>
+                <option value="+1">+1 (EUA/Canadá)</option>
+                <option value="+52">+52 (México)</option>
+                <option value="+58">+58 (Venezuela)</option>
+                <option value="+57">+57 (Colômbia)</option>
+                <option value="+56">+56 (Chile)</option>
+                <!-- Europa -->
+                <option value="+43">+43 (Áustria)</option>
+                <option value="+32">+32 (Bélgica)</option>
+                <option value="+375">+375 (Bielorrússia)</option>
+                <option value="+359">+359 (Bulgária)</option>
+                <option value="+357">+357 (Chipre)</option>
+                <option value="+385">+385 (Croácia)</option>
+                <option value="+45">+45 (Dinamarca)</option>
+                <option value="+421">+421 (Eslováquia)</option>
+                <option value="+386">+386 (Eslovênia)</option>
+                <option value="+34">+34 (Espanha)</option>
+                <option value="+372">+372 (Estônia)</option>
+                <option value="+358">+358 (Finlândia)</option>
+                <option value="+33">+33 (França)</option>
+                <option value="+30">+30 (Grécia)</option>
+                <option value="+36">+36 (Hungria)</option>
+                <option value="+353">+353 (Irlanda)</option>
+                <option value="+39">+39 (Itália)</option>
+                <option value="+371">+371 (Letônia)</option>
+                <option value="+370">+370 (Lituânia)</option>
+                <option value="+356">+356 (Malta)</option>
+                <option value="+31">+31 (Holanda)</option>
+                <option value="+47">+47 (Noruega)</option>
+                <option value="+48">+48 (Polônia)</option>
+                <option value="+351">+351 (Portugal)</option>
+                <option value="+40">+40 (Romênia)</option>
+                <option value="+7">+7 (Rússia)</option>
+                <option value="+46">+46 (Suécia)</option>
+                <option value="+41">+41 (Suíça)</option>
+                <option value="+380">+380 (Ucrânia)</option>
+                <option value="+44">+44 (Reino Unido)</option>
+                <option value="+49">+49 (Alemanha)</option>
+                <option value="+420">+420 (República Tcheca)</option>
+              </select>
+              <input
+                required
+                type="tel"
+                name="number"
+                class="input phone-number"
+                placeholder="DDD Estadual + Número*"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <div class="control elementFlex">
+              <button type="submit" class="btn" id="submit-btn">
+                Concluir
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <div id="toast-container" class="toast-container"></div>
+  </body>
+  <script>
+    function showToast(message, type = "success") {
+      const toast = document.createElement("div");
+      toast.className = `toast ${type}`;
+      toast.innerText = message;
 
-<body>
-  <section class="form">
-    <div class="centro elementFlex">
-      <form name="info" class="info-form elementFlex" id="info-form">
-        <div class="image"><img src="../assets/images/logo-shallow-allwhite-resized.png" alt="Logo Shallow Beachwear">
-        </div>
-        <h1>Preencha os campo abaixo para fazer sua inscrição:</h1>
-        <div class="field">
-          <div class="control">
-            <input required type="text" name="name" class="input" placeholder="Seu nome completo aqui*">
-            <span class="icon"><i class="fi fi-rr-user"></i></span>
-          </div>
-        </div>
-        <div class="field">
-          <div class="control">
-            <input required type="email" name="email" class="input" placeholder="Seu melhor e-mail*">
-            <span class="icon"><i class="fi fi-rr-at"></i></span>
-          </div>
-        </div>
-        <div class="field">
-          <div class="control elementFlex phone-field">
-            <select required name="country-code" class="country-code">
-              <option value="" disabled selected>DDD País</option>
-              <!-- América -->
-              <option value="+54">+54 (Argentina)</option>
-              <option value="+55">+55 (Brasil)</option>
-              <option value="+53">+53 (Cuba)</option>
-              <option value="+506">+506 (Costa Rica)</option>
-              <option value="+503">+503 (El Salvador)</option>
-              <option value="+502">+502 (Guatemala)</option>
-              <option value="+504">+504 (Honduras)</option>
-              <option value="+505">+505 (Nicarágua)</option>
-              <option value="+507">+507 (Panamá)</option>
-              <option value="+51">+51 (Peru)</option>
-              <option value="+59">+59 (Caribe - genérico)</option>
-              <option value="+1">+1 (EUA/Canadá)</option>
-              <option value="+52">+52 (México)</option>
-              <option value="+58">+58 (Venezuela)</option>
-              <option value="+57">+57 (Colômbia)</option>
-              <option value="+56">+56 (Chile)</option>
-              <!-- Europa -->
-              <option value="+43">+43 (Áustria)</option>
-              <option value="+32">+32 (Bélgica)</option>
-              <option value="+375">+375 (Bielorrússia)</option>
-              <option value="+359">+359 (Bulgária)</option>
-              <option value="+357">+357 (Chipre)</option>
-              <option value="+385">+385 (Croácia)</option>
-              <option value="+45">+45 (Dinamarca)</option>
-              <option value="+421">+421 (Eslováquia)</option>
-              <option value="+386">+386 (Eslovênia)</option>
-              <option value="+34">+34 (Espanha)</option>
-              <option value="+372">+372 (Estônia)</option>
-              <option value="+358">+358 (Finlândia)</option>
-              <option value="+33">+33 (França)</option>
-              <option value="+30">+30 (Grécia)</option>
-              <option value="+36">+36 (Hungria)</option>
-              <option value="+353">+353 (Irlanda)</option>
-              <option value="+39">+39 (Itália)</option>
-              <option value="+371">+371 (Letônia)</option>
-              <option value="+370">+370 (Lituânia)</option>
-              <option value="+356">+356 (Malta)</option>
-              <option value="+31">+31 (Holanda)</option>
-              <option value="+47">+47 (Noruega)</option>
-              <option value="+48">+48 (Polônia)</option>
-              <option value="+351">+351 (Portugal)</option>
-              <option value="+40">+40 (Romênia)</option>
-              <option value="+7">+7 (Rússia)</option>
-              <option value="+46">+46 (Suécia)</option>
-              <option value="+41">+41 (Suíça)</option>
-              <option value="+380">+380 (Ucrânia)</option>
-              <option value="+44">+44 (Reino Unido)</option>
-              <option value="+49">+49 (Alemanha)</option>
-              <option value="+420">+420 (República Tcheca)</option>
-            </select>
-            <input required type="tel" name="number" class="input phone-number" placeholder="DDD Estadual + Número*">
-          </div>
-        </div>
-        <div class="field">
-          <div class="control elementFlex">
-            <button type="submit" class="btn" id="submit-btn">Concluir</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </section>
-  <div id="toast-container" class="toast-container"></div>
-</body>
-<script>
-  function showToast(message, type = 'success') {
-    const toast = document.createElement('div');
-    toast.className = `toast ${type}`;
-    toast.innerText = message;
-  
-    document.getElementById('toast-container').appendChild(toast);
-  
-    setTimeout(() => {
-      toast.remove();
-    }, 4000); // mesmo tempo da animação
-  }
-  
-  document.getElementById('info-form').addEventListener('submit', async function (e) {
-    e.preventDefault();
-  
-    const form = e.target;
-    const nome = form.name.value.trim();
-    const email = form.email.value.trim();
-    const dddPais = form['country-code'].value.trim();
-    const numero = form.number.value.trim();
-    const telefone = dddPais + numero;
-  
-    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const numeroValido = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/.test(numero);
-  
-    if (!nome || !email || !numero) {
-      showToast('Por favor, preencha todos os campos obrigatórios.', 'error');
-      return;
+      document.getElementById("toast-container").appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 4000); // mesmo tempo da animação
     }
-  
-    if (!emailValido) {
-      showToast('E-mail inválido. Verifique e tente novamente.', 'error');
-      return;
-    }
-  
-    if (!numeroValido) {
-      showToast('Número de telefone inválido.', 'error');
-      return;
-    }
-  
-    try {
-      const resposta = await fetch('https://api-shallow.onrender.com/api/enviar', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome, email, telefone })
+
+    document
+      .getElementById("info-form")
+      .addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const nome = form.name.value.trim();
+        const email = form.email.value.trim();
+        const dddPais = form["country-code"].value.trim();
+        const numero = form.number.value.trim();
+        const telefone = dddPais + numero;
+
+        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        const numeroValido = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/.test(numero);
+
+        if (!nome || !email || !numero) {
+          showToast(
+            "Por favor, preencha todos os campos obrigatórios.",
+            "error"
+          );
+          return;
+        }
+
+        if (!emailValido) {
+          showToast("E-mail inválido. Verifique e tente novamente.", "error");
+          return;
+        }
+
+        if (!numeroValido) {
+          showToast("Número de telefone inválido.", "error");
+          return;
+        }
+
+        try {
+          const resposta = await fetch(
+            "https://api-shallow.onrender.com/api/enviar",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ nome, email, telefone }),
+            }
+          );
+
+          if (resposta.ok) {
+            form.reset();
+            showToast("Inscrição realizada com sucesso!", "success");
+            setTimeout(() => {
+              window.location.href = "../obrigado";
+            }, 1500);
+          } else {
+            const erro = await resposta.json();
+            showToast(
+              erro.erro ||
+                "Erro ao enviar os dados. Tente novamente mais tarde.",
+              "error"
+            );
+          }
+        } catch (err) {
+          showToast(
+            "Erro de conexão com o servidor. Verifique sua internet ou tente mais tarde.",
+            "error"
+          );
+        }
       });
-  
-      if (resposta.ok) {
-        form.reset();
-        showToast('Inscrição realizada com sucesso!', 'success');
-        setTimeout(() => {
-          window.location.href = '../obrigado';
-        }, 1500);
-      } else {
-        const erro = await resposta.json();
-        showToast(erro.erro || 'Erro ao enviar os dados. Tente novamente mais tarde.', 'error');
-      }
-  
-    } catch (err) {
-      showToast('Erro de conexão com o servidor. Verifique sua internet ou tente mais tarde.', 'error');
-    }
-  });
   </script>
-  
-
 </html>
