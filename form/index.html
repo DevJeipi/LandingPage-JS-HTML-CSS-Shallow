@@ -177,6 +177,12 @@
         e.preventDefault();
 
         const form = e.target;
+        const submitBtn = document.getElementById("submit-btn");
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+          '<span class="spinner" style="margin-right:8px;vertical-align:middle;width:18px;height:18px;display:inline-block;border:2px solid #fff;border-top:2px solid #e91e63;border-radius:50%;animation:spin 1s linear infinite;"></span>Enviando...';
+
         const nome = form.name.value.trim();
         const email = form.email.value.trim();
         const dddPais = form["country-code"].value.trim();
@@ -191,16 +197,22 @@
             "Por favor, preencha todos os campos obrigatórios.",
             "error"
           );
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
           return;
         }
 
         if (!emailValido) {
           showToast("E-mail inválido. Verifique e tente novamente.", "error");
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
           return;
         }
 
         if (!numeroValido) {
           showToast("Número de telefone inválido.", "error");
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
           return;
         }
 
@@ -233,7 +245,15 @@
             "Erro de conexão com o servidor. Verifique sua internet ou tente mais tarde.",
             "error"
           );
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
         }
       });
+
+    // Spinner animation CSS
+    const style = document.createElement("style");
+    style.innerHTML = `@keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }`;
+    document.head.appendChild(style);
   </script>
 </html>
