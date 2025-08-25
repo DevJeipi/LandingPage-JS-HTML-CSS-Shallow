@@ -3,7 +3,48 @@ const cors = require("cors");
 const axios = require("axios");
 const app = express();
 
-app.use(cors());
+// Configuração CORS mais específica
+const corsOptions = {
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://your-vercel-domain.vercel.app", // Substitua pelo seu domínio Vercel
+    "https://*.vercel.app",
+    "https://revendedasras-shallow.vercel.app", // Se este for seu domínio
+    "https://www.shallowbeachwear.com.br", // Hostgator
+    "https://shallowbeachwear.com.br",
+  ],
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "X-Requested-With",
+    "Accept",
+    "Origin",
+  ],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+// Middleware para headers CORS adicionais
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Requested-With, Accept, Origin"
+  );
+  res.header("Access-Control-Allow-Credentials", "true");
+
+  // Responder a requisições OPTIONS (preflight)
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  next();
+});
+
 app.use(express.json({ limit: "10mb" }));
 
 const API_KEY =
