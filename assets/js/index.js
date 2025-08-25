@@ -3,16 +3,42 @@ const cors = require("cors");
 const axios = require("axios");
 const app = express();
 
-// CORS totalmente aberto (apenas para teste/emergência)
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "*");
-  res.header("Access-Control-Max-Age", "3600");
+// Configuração CORS mais específica
+const corsOptions = {
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://*.vercel.app",
+    "https://revendedoras-shallow.vercel.app", // Se este for seu domínio
+    "https://revendedoras.shallow.com.br", // Hostgator
+    "https://shallow.com.br",
+  ],
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "X-Requested-With",
+    "Accept",
+    "Origin",
+  ],
+  credentials: true,
+};
 
+app.use(cors(corsOptions));
+
+// Middleware para headers CORS adicionais
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Requested-With, Accept, Origin"
+  );
+  res.header("Access-Control-Allow-Credentials", "true");
+
+  // Responder a requisições OPTIONS (preflight)
   if (req.method === "OPTIONS") {
-    res.status(200).end();
-    return;
+    return res.status(200).end();
   }
 
   next();
@@ -64,7 +90,6 @@ function validateData(data) {
 
 app.post("/api/enviar", async (req, res) => {
   console.log("Dados recebidos:", req.body);
-  console.log("Origin da requisição:", req.headers.origin);
 
   try {
     // Sanitizar dados
@@ -106,7 +131,7 @@ app.post("/api/enviar", async (req, res) => {
           "Api-Token": API_KEY,
           "Content-Type": "application/json",
         },
-        timeout: 15000, // 15 segundos de timeout
+        timeout: 10000, // 10 segundos de timeout
       }
     );
 
@@ -130,7 +155,7 @@ app.post("/api/enviar", async (req, res) => {
         "Api-Token": API_KEY,
         "Content-Type": "application/json",
       },
-      timeout: 15000,
+      timeout: 10000,
     });
 
     console.log("Contato adicionado à lista com sucesso!");
@@ -170,21 +195,7 @@ app.post("/api/enviar", async (req, res) => {
 
 // Health check endpoint
 app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "OK",
-    timestamp: new Date().toISOString(),
-    cors: "enabled",
-  });
-});
-
-// Endpoint de teste para verificar CORS
-app.get("/test-cors", (req, res) => {
-  res.json({
-    message: "CORS está funcionando!",
-    origin: req.headers.origin,
-    method: req.method,
-    headers: req.headers,
-  });
+  res.status(200).json({ status: "OK", timestamp: new Date().toISOString() });
 });
 
 const PORT = process.env.PORT || 3000;
@@ -192,5 +203,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
   console.log("ActiveCampaign API URL:", API_URL);
-  console.log("CORS configurado para aceitar qualquer origem");
 });
