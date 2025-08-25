@@ -57,7 +57,7 @@
               alt="Logo Shallow Beachwear"
             />
           </div>
-          <h1>Preencha os campo abaixo para fazer sua inscrição:</h1>
+          <h1>Preencha os campos abaixo para fazer sua inscrição:</h1>
           <div class="field">
             <div class="control">
               <input
@@ -66,6 +66,8 @@
                 name="name"
                 class="input"
                 placeholder="Seu nome completo aqui*"
+                minlength="2"
+                maxlength="100"
               />
               <span class="icon"><i class="fi fi-rr-user"></i></span>
             </div>
@@ -78,6 +80,7 @@
                 name="email"
                 class="input"
                 placeholder="Seu melhor e-mail*"
+                maxlength="255"
               />
               <span class="icon"><i class="fi fi-rr-at"></i></span>
             </div>
@@ -104,38 +107,12 @@
                 <option value="+57">+57 (Colômbia)</option>
                 <option value="+56">+56 (Chile)</option>
                 <!-- Europa -->
-                <option value="+43">+43 (Áustria)</option>
-                <option value="+32">+32 (Bélgica)</option>
-                <option value="+375">+375 (Bielorrússia)</option>
-                <option value="+359">+359 (Bulgária)</option>
-                <option value="+357">+357 (Chipre)</option>
-                <option value="+385">+385 (Croácia)</option>
-                <option value="+45">+45 (Dinamarca)</option>
-                <option value="+421">+421 (Eslováquia)</option>
-                <option value="+386">+386 (Eslovênia)</option>
                 <option value="+34">+34 (Espanha)</option>
-                <option value="+372">+372 (Estônia)</option>
-                <option value="+358">+358 (Finlândia)</option>
                 <option value="+33">+33 (França)</option>
-                <option value="+30">+30 (Grécia)</option>
-                <option value="+36">+36 (Hungria)</option>
-                <option value="+353">+353 (Irlanda)</option>
                 <option value="+39">+39 (Itália)</option>
-                <option value="+371">+371 (Letônia)</option>
-                <option value="+370">+370 (Lituânia)</option>
-                <option value="+356">+356 (Malta)</option>
-                <option value="+31">+31 (Holanda)</option>
-                <option value="+47">+47 (Noruega)</option>
-                <option value="+48">+48 (Polônia)</option>
                 <option value="+351">+351 (Portugal)</option>
-                <option value="+40">+40 (Romênia)</option>
-                <option value="+7">+7 (Rússia)</option>
-                <option value="+46">+46 (Suécia)</option>
-                <option value="+41">+41 (Suíça)</option>
-                <option value="+380">+380 (Ucrânia)</option>
                 <option value="+44">+44 (Reino Unido)</option>
                 <option value="+49">+49 (Alemanha)</option>
-                <option value="+420">+420 (República Tcheca)</option>
               </select>
               <input
                 required
@@ -143,6 +120,8 @@
                 name="number"
                 class="input phone-number"
                 placeholder="DDD Estadual + Número*"
+                pattern="[0-9\s\(\)\-]{8,15}"
+                title="Digite apenas números, parênteses, hífens ou espaços"
               />
             </div>
           </div>
@@ -168,7 +147,34 @@
 
       setTimeout(() => {
         toast.remove();
-      }, 4000); // mesmo tempo da animação
+      }, 4000);
+    }
+
+    // Função para sanitizar strings
+    function sanitizeString(str) {
+      return str
+        .trim()
+        .normalize("NFKC") // Normaliza caracteres Unicode
+        .replace(/\s+/g, " "); // Remove espaços extras
+    }
+
+    // Função para validar email
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email.trim().toLowerCase());
+    }
+
+    // Função para validar e limpar telefone
+    function cleanPhone(phone) {
+      // Remove tudo que não é dígito
+      return phone.replace(/\D/g, "");
+    }
+
+    // Função para validar telefone brasileiro
+    function isValidBrazilianPhone(phone) {
+      const cleaned = cleanPhone(phone);
+      // Deve ter 10 ou 11 dígitos (DDD + número)
+      return cleaned.length >= 10 && cleaned.length <= 11;
     }
 
     document
@@ -179,52 +185,71 @@
         const form = e.target;
         const submitBtn = document.getElementById("submit-btn");
         const originalBtnText = submitBtn.innerHTML;
+
+        // Desabilitar botão e mostrar loading
         submitBtn.disabled = true;
         submitBtn.innerHTML =
           '<span class="spinner" style="margin-right:8px;vertical-align:middle;width:18px;height:18px;display:inline-block;border:2px solid #fff;border-top:2px solid #e91e63;border-radius:50%;animation:spin 1s linear infinite;"></span>Enviando...';
 
-        const nome = form.name.value.trim();
-        const email = form.email.value.trim();
-        const dddPais = form["country-code"].value.trim();
-        const numero = form.number.value.trim();
-        const telefone = dddPais + numero;
-
-        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        const numeroValido = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/.test(numero);
-
-        if (!nome || !email || !numero) {
-          showToast(
-            "Por favor, preencha todos os campos obrigatórios.",
-            "error"
-          );
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnText;
-          return;
-        }
-
-        if (!emailValido) {
-          showToast("E-mail inválido. Verifique e tente novamente.", "error");
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnText;
-          return;
-        }
-
-        if (!numeroValido) {
-          showToast("Número de telefone inválido.", "error");
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnText;
-          return;
-        }
-
         try {
+          // Coletar e sanitizar dados
+          const nomeRaw = form.name.value;
+          const emailRaw = form.email.value;
+          const dddPais = form["country-code"].value.trim();
+          const numeroRaw = form.number.value;
+
+          // Sanitizar dados
+          const nome = sanitizeString(nomeRaw);
+          const email = emailRaw.trim().toLowerCase();
+          const numeroLimpo = cleanPhone(numeroRaw);
+          const telefone = dddPais + numeroLimpo;
+
+          console.log("Dados coletados:", { nome, email, telefone });
+
+          // Validações no frontend
+          const errors = [];
+
+          if (!nome || nome.length < 2) {
+            errors.push("Nome deve ter pelo menos 2 caracteres.");
+          }
+
+          if (!isValidEmail(email)) {
+            errors.push("E-mail inválido. Verifique e tente novamente.");
+          }
+
+          if (!dddPais) {
+            errors.push("Selecione o código do país.");
+          }
+
+          // Para números brasileiros, fazer validação específica
+          if (dddPais === "+55" && !isValidBrazilianPhone(numeroRaw)) {
+            errors.push(
+              "Número de telefone brasileiro inválido. Deve ter 10 ou 11 dígitos (DDD + número)."
+            );
+          } else if (dddPais !== "+55" && numeroLimpo.length < 8) {
+            errors.push("Número de telefone muito curto.");
+          }
+
+          if (errors.length > 0) {
+            showToast(errors[0], "error");
+            return;
+          }
+
+          console.log("Enviando dados:", { nome, email, telefone });
+
+          // Fazer requisição para o backend
           const resposta = await fetch(
             "https://api-shallow.onrender.com/api/enviar",
             {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
+              headers: {
+                "Content-Type": "application/json; charset=utf-8",
+              },
               body: JSON.stringify({ nome, email, telefone }),
             }
           );
+
+          const resultado = await resposta.json();
 
           if (resposta.ok) {
             form.reset();
@@ -233,19 +258,27 @@
               window.location.href = "../obrigado";
             }, 1500);
           } else {
-            const erro = await resposta.json();
-            showToast(
-              erro.erro ||
-                "Erro ao enviar os dados. Tente novamente mais tarde.",
-              "error"
-            );
+            console.error("Erro do servidor:", resultado);
+
+            let mensagemErro =
+              "Erro ao enviar os dados. Tente novamente mais tarde.";
+
+            if (resultado.detalhes && Array.isArray(resultado.detalhes)) {
+              mensagemErro = resultado.detalhes[0];
+            } else if (resultado.erro) {
+              mensagemErro = resultado.erro;
+            }
+
+            showToast(mensagemErro, "error");
           }
         } catch (err) {
+          console.error("Erro na requisição:", err);
           showToast(
             "Erro de conexão com o servidor. Verifique sua internet ou tente mais tarde.",
             "error"
           );
         } finally {
+          // Restaurar botão
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalBtnText;
         }
@@ -255,5 +288,30 @@
     const style = document.createElement("style");
     style.innerHTML = `@keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }`;
     document.head.appendChild(style);
+
+    // Máscara para telefone brasileiro
+    document
+      .querySelector('input[name="number"]')
+      .addEventListener("input", function (e) {
+        const countryCode = document.querySelector(
+          'select[name="country-code"]'
+        ).value;
+
+        if (countryCode === "+55") {
+          let value = e.target.value.replace(/\D/g, "");
+
+          if (value.length <= 2) {
+            value = value.replace(/(\d{0,2})/, "($1");
+          } else if (value.length <= 6) {
+            value = value.replace(/(\d{2})(\d{0,4})/, "($1) $2");
+          } else if (value.length <= 10) {
+            value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+          } else {
+            value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+          }
+
+          e.target.value = value;
+        }
+      });
   </script>
 </html>

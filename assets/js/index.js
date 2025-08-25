@@ -1,1 +1,166 @@
-const express=require("express"),cors=require("cors"),axios=require("axios"),app=express();app.use(cors()),app.use(express.json());const API_KEY="c161e761d0de8149526f39669505844a8b1ab9bd65d0074b2280275e7b0d4ca4e536c369",API_URL="https://shallowbeachwear.api-us1.com/api/3";app.post("/api/enviar",async(o,a)=>{console.log("Chegou no backend com:",o.body);let{nome:s,email:t,telefone:c}=o.body;try{let e=await axios.post(`${API_URL}/contacts`,{contact:{email:t,firstName:s,phone:c}},{headers:{"Api-Token":API_KEY,"Content-Type":"application/json"}}),n=e.data.contact.id;await axios.post(`${API_URL}/contactLists`,{contactList:{list:4,contact:n,status:1}},{headers:{"Api-Token":API_KEY,"Content-Type":"application/json"}}),a.status(200).json({mensagem:"Contato adicionado e inscrito com sucesso!"})}catch(p){console.error("Erro no try/catch:",p),a.status(500).json({erro:"Erro ao enviar dados! Por favor aguarde um pouco e tente novamente."})}}),app.listen(3e3,()=>{console.log("Servidor rodando em https://api-shallow.onrender.com")});
+const express = require("express");
+const cors = require("cors");
+const axios = require("axios");
+const app = express();
+
+app.use(cors());
+app.use(express.json({ limit: "10mb" }));
+
+const API_KEY =
+  "c161e761d0de8149526f39669505844a8b1ab9bd65d0074b2280275e7b0d4ca4e536c369";
+const API_URL = "https://shallowbeachwear.api-us1.com/api/3";
+
+// Função para limpar e formatar dados
+function sanitizeData(data) {
+  const { nome, email, telefone } = data;
+
+  return {
+    nome: nome ? nome.trim().normalize("NFKC") : "",
+    email: email ? email.trim().toLowerCase() : "",
+    telefone: telefone
+      ? telefone.replace(/\s+/g, "").replace(/[()-]/g, "")
+      : "",
+  };
+}
+
+// Função para validar dados
+function validateData(data) {
+  const { nome, email, telefone } = data;
+  const errors = [];
+
+  // Validar nome
+  if (!nome || nome.length < 2) {
+    errors.push("Nome deve ter pelo menos 2 caracteres");
+  }
+
+  // Validar email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    errors.push("Email inválido");
+  }
+
+  // Validar telefone (deve ter pelo menos 10 dígitos após o código do país)
+  const phoneRegex = /^\+\d{2,3}\d{10,11}$/;
+  if (!telefone || !phoneRegex.test(telefone)) {
+    errors.push("Telefone inválido. Formato esperado: +55XXXXXXXXXXX");
+  }
+
+  return errors;
+}
+
+app.post("/api/enviar", async (req, res) => {
+  console.log("Dados recebidos:", req.body);
+
+  try {
+    // Sanitizar dados
+    const dadosLimpos = sanitizeData(req.body);
+    console.log("Dados após sanitização:", dadosLimpos);
+
+    // Validar dados
+    const errosValidacao = validateData(dadosLimpos);
+    if (errosValidacao.length > 0) {
+      console.log("Erros de validação:", errosValidacao);
+      return res.status(400).json({
+        erro: "Dados inválidos",
+        detalhes: errosValidacao,
+      });
+    }
+
+    const { nome, email, telefone } = dadosLimpos;
+
+    // Preparar payload para ActiveCampaign
+    const contactPayload = {
+      contact: {
+        email: email,
+        firstName: nome,
+        phone: telefone,
+      },
+    };
+
+    console.log(
+      "Enviando para ActiveCampaign:",
+      JSON.stringify(contactPayload, null, 2)
+    );
+
+    // Criar contato no ActiveCampaign
+    const contactResponse = await axios.post(
+      `${API_URL}/contacts`,
+      contactPayload,
+      {
+        headers: {
+          "Api-Token": API_KEY,
+          "Content-Type": "application/json",
+        },
+        timeout: 10000, // 10 segundos de timeout
+      }
+    );
+
+    console.log("Resposta do ActiveCampaign:", contactResponse.data);
+
+    const contactId = contactResponse.data.contact.id;
+
+    // Adicionar contato à lista (ID 4)
+    const listPayload = {
+      contactList: {
+        list: 4,
+        contact: contactId,
+        status: 1,
+      },
+    };
+
+    console.log("Adicionando à lista:", JSON.stringify(listPayload, null, 2));
+
+    await axios.post(`${API_URL}/contactLists`, listPayload, {
+      headers: {
+        "Api-Token": API_KEY,
+        "Content-Type": "application/json",
+      },
+      timeout: 10000,
+    });
+
+    console.log("Contato adicionado à lista com sucesso!");
+
+    res.status(200).json({
+      mensagem: "Contato adicionado e inscrito com sucesso!",
+      contactId: contactId,
+    });
+  } catch (error) {
+    console.error("Erro completo:", error);
+
+    // Log detalhado do erro
+    if (error.response) {
+      console.error("Status:", error.response.status);
+      console.error("Headers:", error.response.headers);
+      console.error("Data:", error.response.data);
+
+      // Retornar erro específico do ActiveCampaign se disponível
+      if (error.response.data && error.response.data.errors) {
+        return res.status(400).json({
+          erro: "Erro na API do ActiveCampaign",
+          detalhes: error.response.data.errors,
+        });
+      }
+    } else if (error.request) {
+      console.error("Erro de rede:", error.request);
+      return res.status(503).json({
+        erro: "Erro de conexão com o ActiveCampaign. Tente novamente em alguns minutos.",
+      });
+    }
+
+    res.status(500).json({
+      erro: "Erro interno do servidor. Tente novamente em alguns minutos.",
+    });
+  }
+});
+
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "OK", timestamp: new Date().toISOString() });
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log("ActiveCampaign API URL:", API_URL);
+});
