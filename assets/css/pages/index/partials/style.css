@@ -269,7 +269,7 @@ ul.motivos li.box p.whitecolor {
 
 section.beneficios .btn {
   margin: 1em 0 0 0;
-  width: 50%;
+  width: 75%;
 }
 
 section.beneficios span.elementFlex {
@@ -513,7 +513,7 @@ section.como-ser .centro .passos-guia .passo .box-icon i {
 }
 
 section.como-ser .centro .btn {
-  width: 50%;
+  width: 75%;
   font-size: 14px;
 }
 
@@ -541,6 +541,11 @@ section.quem-e div.centro {
 
 .container-historia {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
   padding: 5em 3em 4em 0;
   z-index: 1;
   position: relative;
@@ -557,8 +562,8 @@ section.quem-e div.centro {
 }
 
 .container-historia .btn {
-  margin: 2em 0 0 0;
-  width: 100%;
+  margin-top: 2em;
+  width: 90%;
   background-color: #f2f2f2;
   color: #f80084;
   border: 1px solid #f2f2f2;
